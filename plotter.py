@@ -18,6 +18,7 @@ def plot(df, plots_dir="results"):
     plt.save(plots_dir / "time_vs_batch_size.png")
 
 
+    df["params"] = df["hidden"] * df["depth"] # considering hidden == in + out for simplicity
     sns.scatterplot(
         df,
         x="params",
@@ -28,4 +29,3 @@ def plot(df, plots_dir="results"):
     plt.tight_layout()
     plt.save(plots_dir / "params_vs_memory.png")
 
-    
