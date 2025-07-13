@@ -26,7 +26,8 @@ def plot(df, plots_dir="results"):
         y="memory",
         hue="method",
         size="batch_size",
-        sizes=(20, 400)
+        sizes=(20, 400),
+        alpha=.6
     )
     plt.tight_layout()
     plt.savefig(plots_dir / "params_vs_memory.png")
