@@ -2,7 +2,7 @@ import time
 import yaml
 import torch
 
-class Timer:
+class Tracker:
     def __enter__(self):
         torch.cuda.synchronize()
         self.t = time.perf_counter()
