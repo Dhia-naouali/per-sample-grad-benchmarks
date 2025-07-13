@@ -33,6 +33,7 @@ def sweep(
     batches=(16, 5),
     hiddens=(32, 4),
     depths=(2, 3),
+    **kwargs
 ):
     assert len(batches) == len(hiddens) == len(depths) == 2, "invalid sweep settings"
 
