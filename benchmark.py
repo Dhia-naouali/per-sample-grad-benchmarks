@@ -1,8 +1,8 @@
 import pandas as pd
 import torch
 from tqdm import tqdm
-from .core import make_mlp, retain_graph_vmapped, vjp_vmapped
-from .utils import Tracker
+from core import make_mlp, retain_graph_vmapped, vjp_vmapped
+from utils import Tracker
 
 METHODS = {
     "retain_graph": retain_graph_vmapped,

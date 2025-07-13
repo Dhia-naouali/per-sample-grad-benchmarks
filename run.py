@@ -2,9 +2,9 @@ import torch
 from pathlib import Path
 import argparse
 
-from .benchmark import sweep
-from .plotter import plot
-from .utils import load_config
+from benchmark import sweep
+from plotter import plot
+from utils import load_config
 
 def main():
     parser = argparse.ArgumentParser()
