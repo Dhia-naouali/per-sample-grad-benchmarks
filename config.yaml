@@ -1,0 +1,5 @@
+batches: [16, 5]
+hiddens: [32, 4]
+depths: [2, 3]
+in_dim: 8
+out_dim: 1
