@@ -8,7 +8,7 @@ class Tracker:
         self.t = time.perf_counter()
         return self
 
-    def __exit__(self):
+    def __exit__(self, **args):
         torch.cuda.synchronize()
         self.dt = time.perf_counter() - self.t
         self.mem = peak_memory()
