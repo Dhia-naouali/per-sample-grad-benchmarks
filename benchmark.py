@@ -37,8 +37,7 @@ def sweep(
 ):
     assert len(batches) == len(hiddens) == len(depths) == 2, "invalid sweep settings"
 
-    def expand(setting):
-        base, steps = setting
+    def expand(base, steps):
         return [base * 2**i for i in range(steps)]
 
     batches, hiddens, depths = expand(*batches), expand(*hiddens), expand(*depths)
