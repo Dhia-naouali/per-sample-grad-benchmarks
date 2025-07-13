@@ -19,13 +19,14 @@ def plot(df, plots_dir="results"):
     plt.show()
 
 
-    df["params"] = df["hidden"] * df["depth"] # considering hidden == in + out for simplicity
+    df["params"] = df["hidden"] * df["depth"] * 1e-3 # considering hidden == in + out for simplicity
     sns.scatterplot(
         df,
         x="params",
         y="memory",
         hue="method",
-        size="batch_size"
+        size="batch_size",
+        sizes=(20, 400)
     )
     plt.tight_layout()
     plt.savefig(plots_dir / "params_vs_memory.png")
