@@ -15,7 +15,8 @@ def plot(df, plots_dir="results"):
         hue="method",
     )
     plt.tight_layout()
-    plt.save(plots_dir / "time_vs_batch_size.png")
+    plt.savefig(plots_dir / "time_vs_batch_size.png")
+    plt.show()
 
 
     df["params"] = df["hidden"] * df["depth"] # considering hidden == in + out for simplicity
@@ -27,5 +28,16 @@ def plot(df, plots_dir="results"):
         size="batch_size"
     )
     plt.tight_layout()
-    plt.save(plots_dir / "params_vs_memory.png")
+    plt.savefig(plots_dir / "params_vs_memory.png")
+    plt.show()
 
+
+    sns.violinplot(
+        df,
+        x="method",
+        y="time",
+        inner="quartile",
+    )
+    plt.tight_layout()
+    plt.savefig(plots_dir / "time_violin.png")
+    plt.show()

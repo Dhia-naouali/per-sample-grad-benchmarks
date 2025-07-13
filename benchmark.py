@@ -11,7 +11,7 @@ METHODS = {
 
 
 def single_run(method, batch, hidden, depth, in_dim=8, out_dim=1):
-    model = make_mlp(in_dim, hidden, depth, out_dim)
+    model = make_mlp(in_dim, hidden, out_dim, depth)
     x = torch.randn(batch, in_dim).cuda()
     y = torch.zeros(batch, out_dim).cuda()
 
