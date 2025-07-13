@@ -2,6 +2,8 @@
 
 this repository benchmarks different methods for computing per sample gradients in PyTorch
 
+![](results/time_vs_batch_size.png)
+
 ## Usage
 
 ```bash
