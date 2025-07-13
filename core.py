@@ -3,7 +3,7 @@ from torch import nn, func
 import torch.nn.functional as F
     
 
-def retain_graph_vmapped_autograd(model, x, y):
+def retain_graph_vmapped(model, x, y):
     model.zero_grad()
     logits = model(x)
     losses = F.mse_loss(logits, y, reduction="none").squeeze()
@@ -26,7 +26,7 @@ def retain_graph_vmapped_autograd(model, x, y):
 
 
 
-def vjp_vmapped_func(model, x, y):
+def vjp_vmapped(model, x, y):
     model.zero_grad()
     params = dict(model.named_parameters())
     def forward(p, x):
@@ -45,16 +45,11 @@ def vjp_vmapped_func(model, x, y):
         for b in range(x.size(0))
     ]
 
-model = nn.Sequential(
-    nn.Linear(8, 16),
-    nn.Sigmoid(),
-    nn.Linear(16, 32),
-    nn.Sigmoid(),
-    nn.Linear(32, 1)
-).cuda()
 
-x = torch.randn(12, 8).cuda()
-y = torch.zeros(12, 1).cuda()
-
-g1 = retain_graph_vmapped_autograd(model, x, y)
-g2 = vjp_vmapped_func(model, x, y)
+def init_mlp(in_dim, hidden_dim, out_dim, depth):
+    layers = []
+    for _ in range(depth-1):
+        layers.append(nn.Linear(in_dim, hidden_dim))
+        in_dim = hidden_dim
+    layers.append(nn.Linear(hidden_dim, out_dim))
+    return nn.Sequential(*layers).cuda()
