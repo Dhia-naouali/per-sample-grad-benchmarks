@@ -46,7 +46,7 @@ def vjp_vmapped(model, x, y):
     ]
 
 
-def init_mlp(in_dim, hidden_dim, out_dim, depth):
+def make_mlp(in_dim, hidden_dim, out_dim, depth):
     layers = []
     for _ in range(depth-1):
         layers.append(nn.Linear(in_dim, hidden_dim))
