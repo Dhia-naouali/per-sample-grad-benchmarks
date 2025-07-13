@@ -19,7 +19,7 @@ def peak_memory():
 
 
 
-def load_config(path=None, kwargs):
+def load_config(path=None, **kwargs):
     with open(path) as f:
         configs = yaml.safe_load(f)
 
