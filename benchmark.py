@@ -21,7 +21,7 @@ def single_run(method, batch, hidden, depth, in_dim=8, out_dim=1):
 
     return dict(
         method=method,
-        batch=batch,
+        batch_size=batch,
         hidden=hidden,
         depth=depth,
         time=t.dt,
@@ -41,6 +41,7 @@ def sweep(
         return [base * 2**i for i in range(steps)]
 
     batches, hiddens, depths = expand(*batches), expand(*hiddens), expand(*depths)
+
 
     rows = []
     total = len(METHODS) * len(batches) * len(hiddens) * len(depths)
