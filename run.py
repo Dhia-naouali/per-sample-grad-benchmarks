@@ -26,7 +26,8 @@ def main():
     )
 
     df = sweep(**configs)
-    plots_dir = Path(configs["plots_dir"])
+
+    plots_dir = Path(__file__).parent.resolve() / configs["plots_dir"]
     plots_dir.mkdir(exist_ok=True, parents=True)
     df.to_csv(plots_dir / "benchmarks.csv", index=False)
     plot(df, plots_dir)
